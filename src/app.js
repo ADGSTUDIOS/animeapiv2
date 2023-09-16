@@ -16,8 +16,14 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(
   cors({
-    origin: ["http://anime.adgstudios.co.za", "https://anime.adgstudios.co.za"],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    origin:
+      process.env.BLOCK_WITH_CORS === "true"
+        ? !process.env.ALLOWLIST ||
+          process.env.ALLOWLIST === "" ||
+          process.env.ALLOWLIST === "*"
+          ? "*"
+          : process.env.ALLOWLIST.split(",")
+        : "*", 
   })
 );
 app.use(json());
