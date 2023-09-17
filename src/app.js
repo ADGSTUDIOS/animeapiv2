@@ -45,8 +45,8 @@ app.use(Sentry.Handlers.tracingHandler());
 app.get("/", (req, res) => {
   res.json({
     code: 200,
-    message: "success",
-    docs: "https://amvdocs.pages.dev/api/introduction",
+    message: "Success, Welcome to ANIME @ ADGSTUDIOS API",
+    repo: "https://github.com/ADGSTUDIOS/animeapiv2",
   });
 });
 
